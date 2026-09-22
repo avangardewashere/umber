@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
+/*
+  The Umber tokens. Every colour the library uses is one of these variables.
+  A user who copies a component and wants their own brand changes the values
+  here and nowhere else. Both blocks (light, dark) must define the same list;
+  a test (B0-T4) compares them.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --umber-bg: #faf7f2;
+  --umber-fg: #1c1917;
+  --umber-muted: #6b6259;
+  --umber-surface: #ffffff;
+  --umber-border: #ddd5c9;
+  --umber-accent: #7c3f0e;
+  --umber-accent-fg: #ffffff;
+  --umber-danger: #b3261e;
+  --umber-danger-fg: #ffffff;
+  --umber-success: #2a6b3a;
+  --umber-warning: #8a5a00;
+  --umber-info: #1f5a99;
+  --umber-ring: #7c3f0e;
+  --umber-radius: 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --umber-bg: #141210;
+    --umber-fg: #ece7df;
+    --umber-muted: #a89f94;
+    --umber-surface: #1e1b18;
+    --umber-border: #3a342e;
+    --umber-accent: #d99a5b;
+    --umber-accent-fg: #1c1208;
+    --umber-danger: #f0776d;
+    --umber-danger-fg: #2a0a08;
+    --umber-success: #7fc48f;
+    --umber-warning: #e0b04d;
+    --umber-info: #7fb2ea;
+    --umber-ring: #d99a5b;
+    --umber-radius: 0.5rem;
   }
 }
 
+/*
+  Tailwind reads these so classes like `bg-bg`, `text-fg`, `border-border`
+  and `bg-accent` exist and follow the variables above.
+*/
+@theme inline {
+  --color-bg: var(--umber-bg);
+  --color-fg: var(--umber-fg);
+  --color-muted: var(--umber-muted);
+  --color-surface: var(--umber-surface);
+  --color-border: var(--umber-border);
+  --color-accent: var(--umber-accent);
+  --color-accent-fg: var(--umber-accent-fg);
+  --color-danger: var(--umber-danger);
+  --color-danger-fg: var(--umber-danger-fg);
+  --color-success: var(--umber-success);
+  --color-warning: var(--umber-warning);
+  --color-info: var(--umber-info);
+  --color-ring: var(--umber-ring);
+  --radius-umber: var(--umber-radius);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  color-scheme: light dark;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--umber-bg);
+  color: var(--umber-fg);
 }

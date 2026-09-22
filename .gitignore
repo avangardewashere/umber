@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# lint-wall test probes (removed by the test; listed in case a crash leaves them)
+src/ui/lint-probe-tmp/
+src/site/lint-probe-tmp.ts
