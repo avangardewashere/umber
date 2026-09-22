@@ -147,8 +147,9 @@ dark from Block 0 (via `prefers-color-scheme`; a toggle is v2).
 | **v2** | Install it. Still five components | **4** `npm install umber` (the package) | **5** Theme page: change five variables, see all five components update, copy the CSS | **6** Search and keyboard navigation across the docs |
 | **v3** | Grow it, carefully | **7** Components 6 to 10 (re-planned, one block) | **8** Playground: edit props live in the browser | **9** Changelog and versioned docs |
 
-**Progress:** this guide was written on 2026-09-22. Nothing is built yet. Waiting for your yes on
-the Block 0 decisions, then on Block 0 itself.
+**Progress:** guide written 2026-09-22, all Block 0 decisions accepted the same day. **Block 0 closed
+2026-09-23** (see `docs/blocks/block-0.md`): 16 tests, 3 planted bugs caught, CI green, public repo at
+github.com/avangardewashere/umber. Vercel not yet connected. Waiting for your yes at the Block 1 gate.
 
 v1 is planned in full. v2 and v3 are the current best guess and get re-planned when they start.
 
