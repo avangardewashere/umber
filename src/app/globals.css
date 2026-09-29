@@ -12,6 +12,7 @@
   --umber-muted: #6b6259;
   --umber-surface: #ffffff;
   --umber-border: #ddd5c9;
+  --umber-border-strong: #8f857a;
   --umber-accent: #7c3f0e;
   --umber-accent-fg: #ffffff;
   --umber-danger: #b3261e;
@@ -30,6 +31,7 @@
     --umber-muted: #a89f94;
     --umber-surface: #1e1b18;
     --umber-border: #3a342e;
+    --umber-border-strong: #766c62;
     --umber-accent: #d99a5b;
     --umber-accent-fg: #1c1208;
     --umber-danger: #f0776d;
@@ -52,6 +54,7 @@
   --color-muted: var(--umber-muted);
   --color-surface: var(--umber-surface);
   --color-border: var(--umber-border);
+  --color-border-strong: var(--umber-border-strong);
   --color-accent: var(--umber-accent);
   --color-accent-fg: var(--umber-accent-fg);
   --color-danger: var(--umber-danger);
@@ -72,4 +75,10 @@ html {
 body {
   background: var(--umber-bg);
   color: var(--umber-fg);
+}
+
+/* A visible focus ring on every focusable element of the site. Components also carry their own. */
+:focus-visible {
+  outline: 2px solid var(--umber-ring);
+  outline-offset: 2px;
 }

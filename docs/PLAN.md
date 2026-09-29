@@ -148,8 +148,9 @@ dark from Block 0 (via `prefers-color-scheme`; a toggle is v2).
 | **v3** | Grow it, carefully | **7** Components 6 to 10 (re-planned, one block) | **8** Playground: edit props live in the browser | **9** Changelog and versioned docs |
 
 **Progress:** guide written 2026-09-22, all Block 0 decisions accepted the same day. **Block 0 closed
-2026-09-23** (see `docs/blocks/block-0.md`): 16 tests, 3 planted bugs caught, CI green, public repo at
-github.com/avangardewashere/umber. Vercel not yet connected. Waiting for your yes at the Block 1 gate.
+2026-09-23** (`docs/blocks/block-0.md`). **Block 1 built 2026-09-29** on branch `block-1-landing`
+(`docs/blocks/block-1.md`): 67 tests, 5 planted bugs caught, and a real Dialog bug found and fixed. Vercel
+not yet connected. Waiting for your yes at the Block 2 gate.
 
 v1 is planned in full. v2 and v3 are the current best guess and get re-planned when they start.
 
@@ -234,6 +235,7 @@ that only makes claims a test backs up. *Also:* Open Graph tags; why "Copied" ne
 | B1-T6 | The five cards each link to `/components/<name>`, and the five names are exactly the cap list |
 | B1-T7 | Metadata: title, description and Open Graph image are set (test reads the exported `metadata`) |
 | B1-T8 | Keyboard: tabbing from the top reaches the two hero buttons, then the live card controls, then the copy button, in that order |
+| B1-T9 | *(added in Block 1)* Contrast of every token pairing in both themes: text 4.5:1, focus ring and input outline 3:1 |
 
 **Planted bugs:** forget `rel="noopener"`; remove the `setTimeout` reset; render two `h1`s.
 
@@ -372,7 +374,7 @@ remain). Never cut a component: the cap is five, not "up to five".
 - Requires Tailwind in the user's project. No plain-CSS build in v1.
 - Five components. A visitor who needs a Select leaves, and that is fine for v1.
 - No theme toggle (system preference only), no search, no versioning until v2.
-- Colour contrast is checked by hand, not by test.
+- Colour contrast is tested at the token level (B1-T9), not per rendered pixel. A colour written outside the tokens is not covered.
 
 ## Backlog
 
