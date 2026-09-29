@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* umber:tokens:start */
 /*
   The Umber tokens. Every colour the library uses is one of these variables.
   A user who copies a component and wants their own brand changes the values
@@ -64,6 +65,11 @@
   --color-info: var(--umber-info);
   --color-ring: var(--umber-ring);
   --radius-umber: var(--umber-radius);
+}
+/* umber:tokens:end */
+
+/* Site only: the Geist fonts loaded in layout.tsx. Not part of the tokens a user copies. */
+@theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -81,4 +87,27 @@ body {
 :focus-visible {
   outline: 2px solid var(--umber-ring);
   outline-offset: 2px;
+}
+
+/*
+  Code highlighted by Shiki at build time. Each token carries both theme colours as variables
+  (--shiki-light, --shiki-dark); these rules pick one to match the page.
+*/
+.umber-code pre {
+  overflow: auto;
+  max-height: 34rem;
+  padding: 1rem;
+  font-size: 13px;
+  line-height: 1.65;
+  background: transparent;
+}
+.umber-code pre,
+.umber-code pre span {
+  color: var(--shiki-light);
+}
+@media (prefers-color-scheme: dark) {
+  .umber-code pre,
+  .umber-code pre span {
+    color: var(--shiki-dark);
+  }
 }

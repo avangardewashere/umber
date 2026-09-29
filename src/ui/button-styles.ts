@@ -1,13 +1,16 @@
-import type { ComponentProps } from "react";
-import { cn } from "../cn";
+import { cn } from "./cn";
+
+// Kept out of button.tsx on purpose. button.tsx is a client component, and a function exported
+// from a client file cannot be called on the server. This file has no "use client", so
+// buttonStyles() works anywhere, including a Server Component styling a <Link>.
 
 export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
 export type ButtonSize = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-umber font-medium transition-colors select-none " +
+  "relative inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-umber font-medium transition-colors select-none " +
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring " +
-  "disabled:pointer-events-none disabled:opacity-50";
+  "disabled:pointer-events-none disabled:opacity-50 aria-busy:cursor-progress";
 
 const variants: Record<ButtonVariant, string> = {
   primary: "bg-accent text-accent-fg hover:bg-accent/90",
@@ -32,31 +35,4 @@ export function buttonStyles({
   className,
 }: { variant?: ButtonVariant; size?: ButtonSize; className?: string } = {}): string {
   return cn(base, variants[variant], sizes[size], className);
-}
-
-export type ButtonProps = ComponentProps<"button"> & {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-};
-
-/**
- * A real <button>. Defaults to type="button" so it never submits a form by accident;
- * pass type="submit" when it should.
- */
-export function Button({
-  variant = "primary",
-  size = "md",
-  type = "button",
-  className,
-  ...props
-}: ButtonProps) {
-  return (
-    <button
-      type={type}
-      data-slot="button"
-      data-variant={variant}
-      className={buttonStyles({ variant, size, className })}
-      {...props}
-    />
-  );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Button } from "@/ui/button/button";
+import { Button } from "@/ui/button";
 
 type CopyState = "idle" | "copied" | "failed";
 
@@ -12,7 +12,16 @@ export const COPIED_FOR_MS = 2000;
  * If the browser refuses (no permission, not HTTPS), it selects the code in `targetId` instead
  * and tells the person to press Ctrl+C, so copying still works by hand.
  */
-export function CopyButton({ text, targetId }: { text: string; targetId: string }) {
+export function CopyButton({
+  text,
+  targetId,
+  what = "code",
+}: {
+  text: string;
+  targetId: string;
+  /** Finishes the accessible name, "Copy <what>", so several copy buttons on a page differ. */
+  what?: string;
+}) {
   const [state, setState] = useState<CopyState>("idle");
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
@@ -46,7 +55,7 @@ export function CopyButton({ text, targetId }: { text: string; targetId: string 
       <Button variant="secondary" size="sm" onClick={copy}>
         {state === "idle" ? (
           <>
-            Copy<span className="sr-only"> code</span>
+            Copy<span className="sr-only"> {what}</span>
           </>
         ) : state === "copied" ? (
           "Copied"

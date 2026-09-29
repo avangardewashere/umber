@@ -97,7 +97,7 @@ Each file was restored and compared byte for byte with its backup; the suite wen
 | Real `<dialog>` in Chrome: opens modal, focus moves inside, Escape closes, focus returns to Revoke, reopens after Escape, backdrop click closes, click inside does not | ✅ Claude (after the fix) |
 | Copy button in Chrome: the pane refused clipboard access, so the failure path ran: "Press Ctrl+C", code selected, failure announced | ✅ Claude (failure path) |
 | Copy button success path in a real browser | ⏭️ Your Android check. Jest covers it; the pane could not |
-| Phone width (360 px), light and dark: no horizontal scroll; the code block scrolls inside itself; dark tokens apply | ✅ Claude |
+| Phone width (360 px), light and dark: no horizontal scroll; the code block scrolls inside itself; dark tokens apply | ❌ **Corrected in Block 2.** I compared the page width with a viewport the browser had already widened to 368 px, so I missed that the dot pattern behind the live card stuck out 8 px. Fixed in Block 2; now exactly 360 px |
 | Open Graph image: served as PNG, 1200×630, looks right | ✅ Claude |
 | `/components/select` is a 404; the five docs routes and `/components` are 200 | ✅ Claude |
 | Colour contrast | ✅ now a test (B1-T9) |

@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Badge } from "@/ui/badge/badge";
-import { Button } from "@/ui/button/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/ui/card/card";
-import { Dialog } from "@/ui/dialog/dialog";
-import { Input } from "@/ui/input/input";
+import { Badge } from "@/ui/badge";
+import { Button } from "@/ui/button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/ui/card";
+import { Dialog } from "@/ui/dialog";
+import { Input } from "@/ui/input";
 import { cn } from "@/ui/cn";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
