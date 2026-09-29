@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, type MouseEvent, type ReactNode } from "react";
-import { cn } from "../cn";
+import { cn } from "./cn";
 
 export type DialogProps = {
   open: boolean;

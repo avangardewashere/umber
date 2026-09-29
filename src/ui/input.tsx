@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, type ComponentProps } from "react";
-import { cn } from "../cn";
+import { cn } from "./cn";
 
 export type InputProps = ComponentProps<"input"> & {
   /** Required. Every input needs a visible label; the type makes it impossible to forget. */

@@ -43,3 +43,5 @@ next-env.d.ts
 # lint-wall test probes (removed by the test; listed in case a crash leaves them)
 src/ui/lint-probe-tmp/
 src/site/lint-probe-tmp.ts
+# docs props-extraction fixture (removed by the test)
+src/site/docs/props-fixture.tmp.ts

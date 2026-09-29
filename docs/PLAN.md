@@ -119,13 +119,19 @@ Block 3 about 5 (four components). **v1 is roughly 14 sessions** plus the releas
 ## The folder contract
 
 ```
-src/ui/<component>/            the library. One folder per component:
+src/ui/                        the library, flat (changed in Block 2, see below):
+  cn.ts                          the class helper every component imports as "./cn"
   button.tsx                     the component. This exact file is what the site shows and what users copy
+  button-styles.ts               server-safe parts a component may need (Button only)
   button.test.tsx                its tests. Also shown on the site ("tests included")
-  button.meta.ts                 name, one-line description, example usage, accessibility notes
+  button.meta.ts                 accessibility notes and the name of the props type, for the site only
 src/site/                      the website: landing page, docs pages, nav, code block, copy button
 src/app/                       Next.js routes only, thin
 ```
+
+**Why flat (Block 2 deviation):** users paste files into their own `components/ui/`. With one folder
+per component, `button.tsx` imported `../cn`, which breaks the moment a stranger pastes it next to
+`cn.ts`. Flat, the import is `./cn` in both places, and `@/components/ui/button` is a real path.
 
 **The rule that keeps docs honest:** the docs page **reads `button.tsx` from disk at build time** and
 shows that. The props table is **generated from the TypeScript types** at build time. Nothing about a
@@ -147,10 +153,10 @@ dark from Block 0 (via `prefers-color-scheme`; a toggle is v2).
 | **v2** | Install it. Still five components | **4** `npm install umber` (the package) | **5** Theme page: change five variables, see all five components update, copy the CSS | **6** Search and keyboard navigation across the docs |
 | **v3** | Grow it, carefully | **7** Components 6 to 10 (re-planned, one block) | **8** Playground: edit props live in the browser | **9** Changelog and versioned docs |
 
-**Progress:** guide written 2026-09-22, all Block 0 decisions accepted the same day. **Block 0 closed
-2026-09-23** (`docs/blocks/block-0.md`). **Block 1 built 2026-09-29** on branch `block-1-landing`
-(`docs/blocks/block-1.md`): 67 tests, 5 planted bugs caught, and a real Dialog bug found and fixed. Vercel
-not yet connected. Waiting for your yes at the Block 2 gate.
+**Progress:** guide written 2026-09-22. **Block 0 closed 2026-09-23.** **Block 1 built 2026-09-29**
+(PR #1, open). **Block 2 built 2026-09-30** on `block-2-docs`, stacked on Block 1 (`docs/blocks/block-2.md`):
+114 tests, 7 planted bugs caught, and the stranger test found two real bugs, both fixed. Vercel not
+yet connected. Waiting for your yes at the Block 3 gate.
 
 v1 is planned in full. v2 and v3 are the current best guess and get re-planned when they start.
 
@@ -278,7 +284,8 @@ build time. *Also:* forwarding refs; why `disabled` and `aria-disabled` are diff
 | B2-T5 | The docs page shows the source that is actually on disk (test reads `button.tsx` and expects the page text to contain its first line) |
 | B2-T6 | The props table lists `variant`, `size`, `loading` with their allowed values, and a prop added to the type appears without editing the page (test uses a fixture type) |
 | B2-T7 | The docs page passes jest-axe, has one `h1`, and the left nav marks the current page with `aria-current` |
-| B2-T8 | Stranger test (named check, outside Jest, recorded in the block note): pasted into a fresh app, it compiles and renders |
+| B2-T8 | Stranger test (named check, outside Jest, recorded in the block note): pasted into a fresh app, it compiles and renders. *Plus, in Jest since Block 2:* every `src/ui` file that uses hooks or its own event handlers starts with `"use client"`, and no other file does |
+| B2-T9 | *(added in Block 2)* The preview controls: variant and size update the preview and its code line; Loading makes it busy and it ignores clicks |
 
 **Planted bugs:** drop `forwardRef`; let `onClick` fire while loading; hardcode the props table.
 
@@ -365,7 +372,7 @@ remain). Never cut a component: the cap is five, not "up to five".
 | Block 0 | Styling | Tailwind 4 + CSS variables (the copy-paste model assumes Tailwind) | **decided** |
 | Block 0 | Licence | MIT | **decided** |
 | Block 0 gate | The one-sentence pitch and the three "why" points | Drafted in Block 1 above | waiting |
-| Block 2 | Add Shiki | Yes: build-time highlighting, zero client JS | asked at the gate |
+| Block 2 | Add Shiki | Yes: build-time highlighting, zero client JS. Themes github-light-default and github-dark-default, both 4.5:1 or better on Umber's surface | **decided 2026-09-30** ("continue with the block 2") |
 | Block 4 | Package name, `tsup`, publish from CI or by hand | Re-planned at v2 | later |
 
 ## Known limits (on purpose)

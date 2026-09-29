@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Badge } from "@/ui/badge/badge";
-import { buttonStyles } from "@/ui/button/button";
+import { Badge } from "@/ui/badge";
+import { buttonStyles } from "@/ui/button-styles";
 import { COMPONENTS } from "@/site/catalog";
 import { CopyButton } from "@/site/copy-button";
 import { REPO_URL } from "@/site/shell";
@@ -72,7 +72,7 @@ export function Landing() {
         <figure className="relative">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-[radial-gradient(var(--umber-border-strong)_1px,transparent_1px)] [background-size:14px_14px] opacity-40 [mask-image:radial-gradient(closest-side,black,transparent)]"
+            className="pointer-events-none absolute -inset-x-3 -inset-y-6 rounded-[2rem] sm:-inset-6 bg-[radial-gradient(var(--umber-border-strong)_1px,transparent_1px)] [background-size:14px_14px] opacity-40 [mask-image:radial-gradient(closest-side,black,transparent)]"
           />
           <Specimen />
           <figcaption className="relative mt-4 text-center text-xs text-muted">
