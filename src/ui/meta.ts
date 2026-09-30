@@ -7,6 +7,8 @@ export type ComponentMeta = {
   propsType: string;
   /** The native element the component renders, whose props it also accepts. */
   element: string;
+  /** Replaces the props table caption when the default sentence does not fit (compound components). */
+  propsNote?: string;
   /** What the component does for accessibility, one point per line. */
   accessibility: string[];
 };

@@ -4,8 +4,6 @@ import { COMPONENTS } from "@/site/catalog";
 import { CodeBlock } from "@/site/docs/code-block";
 import { DocsShell } from "@/site/docs/docs-shell";
 import { loadSetup } from "@/site/docs/load";
-import { DOCS } from "@/site/docs/registry";
-import { Badge } from "@/ui/badge";
 
 export const metadata: Metadata = {
   title: "Components",
@@ -32,10 +30,7 @@ export default async function ComponentsPage() {
                 href={`/components/${c.slug}`}
                 className="flex h-full flex-col rounded-[calc(var(--umber-radius)*1.5)] border border-border bg-surface p-5 transition-colors hover:border-border-strong"
               >
-                <span className="flex items-center justify-between gap-3">
-                  <span className="text-lg font-semibold">{c.name}</span>
-                  {DOCS[c.slug] ? null : <Badge>Docs soon</Badge>}
-                </span>
+                <span className="text-lg font-semibold">{c.name}</span>
                 <span className="mt-1 text-sm text-pretty text-muted">{c.summary}</span>
               </Link>
             </li>

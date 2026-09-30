@@ -12,6 +12,7 @@ export type DocsData = {
   name: string;
   summary: string;
   element: string;
+  propsNote?: string;
   accessibility: string[];
   props: PropDoc[];
   /** The files to copy, main file first. */
@@ -38,6 +39,7 @@ export async function loadDocs(slug: string): Promise<DocsData | null> {
     name: catalog.name,
     summary: catalog.summary,
     element: entry.meta.element,
+    propsNote: entry.meta.propsNote,
     accessibility: entry.meta.accessibility,
     props: extractProps(entry.files[0], entry.meta.propsType),
     sources,

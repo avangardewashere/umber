@@ -57,7 +57,7 @@ export function ComponentDocs({ docs }: { docs: DocsData }) {
       </Section>
 
       <Section id="props" title="Props">
-        <PropsTable props={docs.props} element={docs.element} name={docs.name} />
+        <PropsTable props={docs.props} element={docs.element} name={docs.name} note={docs.propsNote} />
       </Section>
 
       <Section id="accessibility" title="Accessibility">
