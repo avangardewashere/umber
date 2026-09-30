@@ -9,7 +9,8 @@
     "lint": "eslint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "typecheck": "next typegen && tsc --noEmit"
+    "typecheck": "next typegen && tsc --noEmit",
+    "stranger": "node scripts/stranger-test.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

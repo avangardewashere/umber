@@ -3,15 +3,29 @@
 import { useId, type ComponentProps } from "react";
 import { cn } from "./cn";
 
-export type InputProps = ComponentProps<"input"> & {
-  /** Required. Every input needs a visible label; the type makes it impossible to forget. */
+/** The props Input adds. Every native <input> prop, including `ref`, also works. */
+export type InputOwnProps = {
+  /**
+   * The visible label. Required: the type makes an unlabelled input impossible to write.
+   */
   label: string;
-  /** Help text under the field, read out by screen readers after the label. */
+  /**
+   * Help text under the field. Screen readers read it after the label.
+   */
   description?: string;
-  /** Error text. Marks the field invalid and is read out by screen readers. */
+  /**
+   * The error to show. Sets `aria-invalid` and is read by screen readers when the field is focused.
+   * Pass it only when there is an error; an empty string means no error.
+   */
   error?: string;
 };
 
+export type InputProps = Omit<ComponentProps<"input">, keyof InputOwnProps> & InputOwnProps;
+
+/**
+ * A labelled text field. Label, description and error are wired together for screen readers,
+ * so you only supply the words.
+ */
 export function Input({ label, description, error, id, className, ...props }: InputProps) {
   const autoId = useId();
   const inputId = id ?? autoId;
@@ -25,6 +39,7 @@ export function Input({ label, description, error, id, className, ...props }: In
         {label}
       </label>
       <input
+        {...props}
         id={inputId}
         aria-describedby={describedBy}
         aria-invalid={error ? true : undefined}
@@ -34,7 +49,6 @@ export function Input({ label, description, error, id, className, ...props }: In
           "disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-danger",
           className,
         )}
-        {...props}
       />
       {description ? (
         <p id={descriptionId} className="text-xs text-muted">

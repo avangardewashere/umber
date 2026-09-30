@@ -154,9 +154,10 @@ dark from Block 0 (via `prefers-color-scheme`; a toggle is v2).
 | **v3** | Grow it, carefully | **7** Components 6 to 10 (re-planned, one block) | **8** Playground: edit props live in the browser | **9** Changelog and versioned docs |
 
 **Progress:** guide written 2026-09-22. **Block 0 closed 2026-09-23.** **Block 1 built 2026-09-29**
-(PR #1, open). **Block 2 built 2026-09-30** on `block-2-docs`, stacked on Block 1 (`docs/blocks/block-2.md`):
-114 tests, 7 planted bugs caught, and the stranger test found two real bugs, both fixed. Vercel not
-yet connected. Waiting for your yes at the Block 3 gate.
+(PR #1). **Block 2 built 2026-09-30** (PR #2). **Block 3 built 2026-09-30** on `block-3-components`,
+stacked on Block 2 (`docs/blocks/block-3.md`): all five components finished, documented and passed the
+stranger test, which is now `npm run stranger`. PRs #1 to #3 open, in order. Vercel not yet connected.
+Waiting for your yes on the v1 release.
 
 v1 is planned in full. v2 and v3 are the current best guess and get re-planned when they start.
 
@@ -328,7 +329,7 @@ build time. *Also:* forwarding refs; why `disabled` and `aria-disabled` are diff
 | B3-T6 | Dialog: backdrop click closes; a click inside does not; the title is the accessible name |
 | B3-T7 | Dialog: a form with an Input inside submits and closes; Tab cycles inside the dialog while open (if jsdom cannot do this, it moves to outside-Jest and the block note says so) |
 | B3-T8 | The `/components` index lists exactly five, and each docs page passes axe |
-| B3-T9 | Stranger test for all four (named check, block note) |
+| B3-T9 | Stranger test for all four (named check, block note). *Since Block 3:* `npm run stranger`, a script in `scripts/`, runs it for any or all of the five against the running site |
 
 **Planted bugs:** drop `aria-describedby`; forget to return focus; let backdrop click close on inside clicks.
 

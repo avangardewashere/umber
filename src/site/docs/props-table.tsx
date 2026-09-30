@@ -1,7 +1,17 @@
 import type { PropDoc } from "./props";
 
 /** The props table, built from the component's own types (see props.ts). */
-export function PropsTable({ props, element, name }: { props: PropDoc[]; element: string; name: string }) {
+export function PropsTable({
+  props,
+  element,
+  name,
+  note,
+}: {
+  props: PropDoc[];
+  element: string;
+  name: string;
+  note?: string;
+}) {
   return (
     <div
       role="region"
@@ -11,8 +21,12 @@ export function PropsTable({ props, element, name }: { props: PropDoc[]; element
     >
       <table className="w-full min-w-[40rem] border-collapse text-left text-sm">
         <caption className="border-b border-border px-4 py-3 text-left text-sm text-muted">
-          Props {name} adds. Every native <code className="font-mono text-fg">&lt;{element}&gt;</code>{" "}
-          prop, including <code className="font-mono text-fg">ref</code>, also works.
+          {note ?? (
+            <>
+              Props {name} adds. Every native <code className="font-mono text-fg">&lt;{element}&gt;</code>{" "}
+              prop, including <code className="font-mono text-fg">ref</code>, also works.
+            </>
+          )}
         </caption>
         <thead>
           <tr className="border-b border-border text-xs text-muted">

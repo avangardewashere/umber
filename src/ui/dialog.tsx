@@ -3,14 +3,36 @@
 import { useEffect, useId, useRef, type MouseEvent, type ReactNode } from "react";
 import { cn } from "./cn";
 
-export type DialogProps = {
+/** The props Dialog takes. It renders a native <dialog>; extra element props are not passed through. */
+export type DialogOwnProps = {
+  /**
+   * Whether the dialog is open. Dialog is always controlled: you hold the state.
+   */
   open: boolean;
+  /**
+   * Called with `false` when the dialog asks to close: Escape, a click on the backdrop, or your
+   * own close button. Called once per opening, however it closes.
+   */
   onOpenChange: (open: boolean) => void;
+  /**
+   * The heading. It becomes the dialog's accessible name.
+   */
   title: string;
+  /**
+   * One or two sentences under the title, read by screen readers as the dialog's description.
+   */
   description?: string;
+  /**
+   * The body: a form, a warning, buttons. Rendered only while open.
+   */
   children?: ReactNode;
+  /**
+   * Extra classes for the <dialog> element, for example a different width.
+   */
   className?: string;
 };
+
+export type DialogProps = DialogOwnProps;
 
 /**
  * A modal built on the browser's own <dialog>. showModal() gives focus trapping, Escape to close,
@@ -18,21 +40,38 @@ export type DialogProps = {
  */
 export function Dialog({ open, onOpenChange, title, description, children, className }: DialogProps) {
   const ref = useRef<HTMLDialogElement>(null);
+  const opener = useRef<HTMLElement | null>(null);
+  const reported = useRef(false);
   const titleId = useId();
   const descriptionId = useId();
 
   useEffect(() => {
     const dialog = ref.current;
     if (!dialog) return;
-    if (open && !dialog.open) dialog.showModal();
-    if (!open && dialog.open) dialog.close();
+    if (open) {
+      reported.current = false;
+      if (!dialog.open) {
+        opener.current = document.activeElement as HTMLElement | null;
+        dialog.showModal();
+      }
+      return;
+    }
+    if (dialog.open) dialog.close();
+    // Give focus back to whatever opened the dialog. Browsers do this themselves after
+    // showModal(), but not every browser does it every time, so Dialog makes sure.
+    const el = opener.current;
+    opener.current = null;
+    const focusIsLost = document.activeElement === document.body || dialog.contains(document.activeElement);
+    if (el && el.isConnected && focusIsLost) el.focus();
   }, [open]);
 
   // Tell the parent once, however the dialog was closed. The browser can close it by itself
-  // (Escape fires "cancel", and "close" may arrive late or not at all), so both events report
-  // here, and the `open` check stops a second report.
+  // (Escape fires "cancel", then "close"), so both events report here, and the flag stops a
+  // second report before the parent has re-rendered with open={false}.
   function requestClose() {
-    if (open) onOpenChange(false);
+    if (reported.current) return;
+    reported.current = true;
+    onOpenChange(false);
   }
 
   // A click on the backdrop lands on the <dialog> element itself, because the content sits in an
