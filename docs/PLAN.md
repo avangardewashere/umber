@@ -156,8 +156,11 @@ dark from Block 0 (via `prefers-color-scheme`; a toggle is v2).
 **Progress:** guide written 2026-09-22. **Block 0 closed 2026-09-23.** **Block 1 built 2026-09-29**
 (PR #1). **Block 2 built 2026-09-30** (PR #2). **Block 3 built 2026-09-30** on `block-3-components`,
 stacked on Block 2 (`docs/blocks/block-3.md`): all five components finished, documented and passed the
-stranger test, which is now `npm run stranger`. PRs #1 to #3 open, in order. Vercel not yet connected.
-Waiting for your yes on the v1 release.
+stranger test, which is now `npm run stranger`. **v1 release prepared 2026-10-07** on `v1-release`
+(`docs/release/v1-checklist.md`): README and launch post drafted. PRs #1 to #4 open, in order. Blocked on
+you for the merges, the Android check and the stranger who is not you; the tag follows the merge.
+Vercel connected 2026-10-07: **https://umber-green-rho.vercel.app** (deploys `main`, so it shows Block 0
+until the PRs merge).
 
 v1 is planned in full. v2 and v3 are the current best guess and get re-planned when they start.
 
