@@ -3,7 +3,7 @@
 Five accessible React components you copy into your project. No package to install, nothing to
 update: each component is one file you own, with its tests beside it.
 
-**Site:** _link added when the Vercel deployment is connected_ · **Licence:** MIT
+**Site:** https://umber-green-rho.vercel.app · **Licence:** MIT
 
 | Component | What it does |
 |---|---|

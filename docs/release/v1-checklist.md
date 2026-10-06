@@ -5,9 +5,9 @@ From the guide's "v1 release (after Block 3)". Prepared 2026-10-07 on branch `v1
 | Step | Who | Status |
 |---|---|---|
 | Blocks 0 to 3 built, each with its tests green and its block note | Claude | ✅ done (PRs #1, #2, #3) |
-| Merge PRs #1, #2, #3 into `main`, in order | **You** (merging is blocked for Claude) | ⏳ |
-| Connect Vercel: import `avangardewashere/umber`, default Next.js settings. `umber.vercel.app` is taken; use the name Vercel gives, or add a domain | **You** (needs your dashboard login) | ⏳ |
-| Put the production URL in `README.md` (the *Site:* line) and in `docs/PLAN.md` | Claude, once the URL exists | ⏳ |
+| Merge PRs #1, #2, #3, #4 into `main`, in order | **You** (merging is blocked for Claude) | ⏳ still open on 2026-10-07; the live site shows Block 0 until this is done |
+| Connect Vercel: import `avangardewashere/umber`, default Next.js settings | **You** | ✅ 2026-10-07, https://umber-green-rho.vercel.app (deploys `main`) |
+| Put the production URL in `README.md` (the *Site:* line) and in `docs/PLAN.md` | Claude | ✅ this branch |
 | On your Android: landing page, a component page, Copy, open the Dialog and close it with the back gesture, paste the link into Messenger for the preview card | **You** | ⏳ |
 | Tag `v1.0.0` and create the GitHub release (`gh release create v1.0.0 --generate-notes`) | Claude, after the merges | ⏳ |
 | README updated with the five, the copy steps, the stranger test | Claude | ✅ this branch |
